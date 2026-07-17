@@ -1,16 +1,28 @@
-# React + Vite
+# Integrasi frontend LENTERA ke repo
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Salin file-file berikut ke root repo `lentera` (timpa yang lama):
 
-Currently, two official plugins are available:
+```
+index.html                      → timpa (judul + Google Fonts)
+src/main.jsx                    → sama dengan template, tidak berubah
+src/index.css                   → timpa (seluruh style LENTERA)
+src/App.jsx                     → timpa (router utama)
+src/data.js                     → baru (data contoh, nanti diganti API)
+src/components/*.jsx            → baru (10 komponen)
+.env.local.example              → baru
+```
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+Yang boleh dihapus dari template: `src/App.css`, `src/assets/` (react.svg, vite.svg, hero.png)
+karena sudah tidak dipakai. `package.json` dan `vite.config.js` TIDAK perlu diubah.
 
-## React Compiler
+## Menjalankan
+```
+npm install
+npm run dev
+```
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## Asisten AI
+- Dev: salin `.env.local.example` → `.env.local`, isi `VITE_ANTHROPIC_API_KEY`.
+- Produksi: jangan taruh API key di frontend. Buat endpoint backend (mis. `POST /api/chat`)
+  yang meneruskan request ke API Anthropic, lalu ganti URL fetch di
+  `src/components/AsistenAI.jsx`.
